@@ -26,7 +26,7 @@ export function SiteHeader() {
             <Link
               key={item.to}
               to={item.to}
-              activeOptions={item.exact ? { exact: true } : undefined}
+              activeOptions={{ exact: item.exact === true }}
               className="min-w-0 rounded-lg px-1 py-2 text-center text-[10px] font-semibold uppercase text-muted-foreground transition-colors hover:bg-surface hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:px-3 md:text-xs"
               activeProps={{ className: "bg-primary/12 text-primary" }}
             >
