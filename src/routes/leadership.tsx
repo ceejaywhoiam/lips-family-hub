@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
-import logo from "@/assets/lips-family-logo.jpg";
+import logo from "@/assets/lips-family-official.jpeg.asset.json";
 import nova from "@/assets/leader-nova.jpg";
 import kai from "@/assets/leader-kai.jpg";
 
@@ -29,7 +29,7 @@ function LeadershipPage() {
           <article key={leader.name} className="glass-panel overflow-hidden rounded-2xl border border-border md:grid md:grid-cols-[0.85fr_1.15fr]">
             <img src={leader.image} alt={`Placeholder portrait for ${leader.name}`} width={736} height={912} loading="lazy" className="aspect-[4/3] h-full w-full object-cover md:aspect-auto" />
             <div className="flex flex-col justify-between p-5 md:p-7">
-              <img src={logo} alt="LIPS Family logo" width={1024} height={640} loading="lazy" className="mb-10 h-12 w-24 rounded-md border border-border object-cover" />
+              <img src={logo.url} alt="LIPS Family crown logo" width={768} height={768} loading="lazy" className="mb-10 size-20 rounded-md border border-border object-cover" />
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">Name</p>
                 <h2 className="mt-1 font-display text-2xl font-black text-foreground">{leader.name}</h2>
