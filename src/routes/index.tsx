@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/lips-family-logo.jpg";
+import logo from "@/assets/lips-family-official.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -43,7 +43,7 @@ function Index() {
         </div>
         <div className="relative">
           <div className="absolute inset-6 rounded-full bg-primary/20 blur-3xl" />
-          <img src={logo} alt="LIPS Family neon logo" width={1024} height={640} className="relative w-full rounded-2xl border border-border object-cover shadow-2xl" />
+          <img src={logo.url} alt="LIPS Family crown logo in white, gold, and teal" width={768} height={768} className="relative w-full rounded-2xl border border-border object-cover shadow-2xl" />
         </div>
       </div>
     </main>
