@@ -1,24 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
+import logo from "@/assets/lips-family-logo.jpg";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "LIPS Family — Live In The Stream" },
+      { name: "description", content: "Meet LIPS Family, a streaming collective and creator agency built to grow standout creators." },
+      { property: "og:title", content: "LIPS Family — Live In The Stream" },
+      { property: "og:description", content: "A streaming family and agency built to grow standout creators." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="relative min-h-screen overflow-hidden px-5 pb-28 pt-10 md:px-8 md:pb-16 md:pt-32">
+      <div className="ambient ambient-one" />
+      <div className="ambient ambient-two" />
+      <div className="page-enter relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <div>
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+            <span className="size-1.5 rounded-full bg-primary" /> Streaming collective
+          </p>
+          <h1 className="font-display text-6xl font-black leading-[0.88] text-foreground sm:text-7xl lg:text-8xl">
+            LIVE.<br />IN. THE<br /><span className="text-primary">STREAM.</span>
+          </h1>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
+            LIPS stands for <strong className="font-semibold text-foreground">Live In the Present Stream</strong>. We are a family and agency helping creators build stronger brands, better content, and lasting community. <span className="text-primary">[Placeholder acronym and description]</span>
+          </p>
+          <ul aria-label="Platforms" className="mt-6 flex flex-wrap gap-2">
+            {["Twitch", "YouTube", "Kick", "TikTok", "Instagram"].map((platform) => (
+              <li key={platform} className="rounded-md border border-border bg-surface px-3 py-1.5 text-xs text-foreground">{platform} <span className="sr-only">placeholder</span></li>
+            ))}
+          </ul>
+          <Link to="/recruitment" className="mt-8 inline-flex rounded-xl bg-primary px-5 py-3 font-display text-sm font-bold uppercase text-primary-foreground transition-colors hover:bg-primary/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            Find your path
+          </Link>
+        </div>
+        <div className="relative">
+          <div className="absolute inset-6 rounded-full bg-primary/20 blur-3xl" />
+          <img src={logo} alt="LIPS Family neon logo" width={1024} height={640} className="relative w-full rounded-2xl border border-border object-cover shadow-2xl" />
+        </div>
+      </div>
+    </main>
   );
 }
