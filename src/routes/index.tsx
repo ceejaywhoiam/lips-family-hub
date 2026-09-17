@@ -5,9 +5,9 @@ import logo from "@/assets/lips-family-official.jpeg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LIPS Family — Live In The Stream" },
+      { title: "LIPS Family — Loyalty, Integrity, Power, Success" },
       { name: "description", content: "Meet LIPS Family, a streaming collective and creator agency built to grow standout creators." },
-      { property: "og:title", content: "LIPS Family — Live In The Stream" },
+      { property: "og:title", content: "LIPS Family — Loyalty, Integrity, Power, Success" },
       { property: "og:description", content: "A streaming family and agency built to grow standout creators." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -26,8 +26,8 @@ function Index() {
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
             <span className="size-1.5 rounded-full bg-primary" /> Streaming collective
           </p>
-          <h1 className="font-display text-6xl font-black leading-[0.88] text-foreground sm:text-7xl lg:text-8xl">
-            LIVE.<br />IN. THE<br /><span className="text-primary">STREAM.</span>
+          <h1 className="font-display text-4xl font-black leading-[0.95] text-foreground sm:text-6xl lg:text-7xl">
+            LOYALTY.<br />INTEGRITY.<br />POWER. &amp;<br /><span className="text-primary">SUCCESS.</span>
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
             LIPS stands for <strong className="font-semibold text-foreground">Loyalty, Integrity, Power, &amp; Success</strong>. We are a family and agency helping creators build stronger brands, better content, and lasting community. <span className="text-primary">[Placeholder description — replace with your own wording]</span>
