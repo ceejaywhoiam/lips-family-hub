@@ -30,7 +30,7 @@ function Index() {
             LOYALTY.<br />INTEGRITY.<br />POWER. &amp;<br /><span className="text-primary">SUCCESS.</span>
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
-            LIPS stands for <strong className="font-semibold text-foreground">Loyalty, Integrity, Power, &amp; Success</strong>. We are a family and agency helping creators build stronger brands, better content, and lasting community. <span className="text-primary">[Placeholder description — replace with your own wording]</span>
+            LIPS stands for <strong className="font-semibold text-foreground">Loyalty, Integrity, Power, &amp; Success</strong>. We are a family and agency helping creators build stronger brands, better content, and lasting community. Do you feel like you live by those 4 words? <Link to="/recruitment" className="font-semibold text-primary underline-offset-4 hover:underline">Go to our recruitment page, sign up, and let's see what you stand for.</Link>
           </p>
           <ul aria-label="Platforms" className="mt-6 flex flex-wrap gap-2">
             {["Twitch", "YouTube", "Kick", "TikTok", "Instagram"].map((platform) => (
