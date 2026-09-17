@@ -30,7 +30,7 @@ function Index() {
             LIVE.<br />IN. THE<br /><span className="text-primary">STREAM.</span>
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
-            LIPS stands for <strong className="font-semibold text-foreground">Live In the Present Stream</strong>. We are a family and agency helping creators build stronger brands, better content, and lasting community. <span className="text-primary">[Placeholder acronym and description]</span>
+            LIPS stands for <strong className="font-semibold text-foreground">Loyalty, Integrity, Power, &amp; Success</strong>. We are a family and agency helping creators build stronger brands, better content, and lasting community. <span className="text-primary">[Placeholder description — replace with your own wording]</span>
           </p>
           <ul aria-label="Platforms" className="mt-6 flex flex-wrap gap-2">
             {["Twitch", "YouTube", "Kick", "TikTok", "Instagram"].map((platform) => (
