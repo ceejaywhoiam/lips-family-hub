@@ -46,6 +46,50 @@ function Index() {
           <img src={logo.url} alt="LIPS Family crown logo in white, gold, and teal" width={768} height={768} className="relative w-full rounded-2xl border border-border object-cover shadow-2xl" />
         </div>
       </div>
+
+      {/* Definitions — wording is editable until the family finalizes it. */}
+      <section aria-labelledby="lips-meaning" className="page-enter relative mx-auto mt-16 max-w-6xl md:mt-24">
+        <h2 id="lips-meaning" className="font-display text-2xl font-black uppercase tracking-wide text-foreground sm:text-3xl">
+          What we stand for
+        </h2>
+        <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+          Four words, one family. This is how we live them out, every stream and every day.
+        </p>
+        <dl className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {VALUES.map((value) => (
+            <div key={value.word} className="glass-panel flex flex-col gap-3 rounded-2xl p-6">
+              <dt className="font-display text-lg font-black uppercase tracking-[0.12em] text-primary">
+                {value.word}
+              </dt>
+              <dd className="text-sm leading-relaxed text-muted-foreground">{value.definition}</dd>
+            </div>
+          ))}
+        </dl>
+        <div className="mt-10 text-center">
+          <Link to="/recruitment" className="inline-flex rounded-xl bg-primary px-6 py-3 font-display text-sm font-bold uppercase text-primary-foreground transition-colors hover:bg-primary/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            Live by these words? Apply now
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }
+
+const VALUES = [
+  {
+    word: "Loyalty",
+    definition: "We show up for each other — in chat, in collabs, and through the hard seasons. The family comes first, always.",
+  },
+  {
+    word: "Integrity",
+    definition: "Honest content, honest play, honest business. We build real trust with our audience and never fake a win.",
+  },
+  {
+    word: "Power",
+    definition: "Consistency, skill, and the drive to keep leveling up. Real power is what you build, not what you take.",
+  },
+  {
+    word: "Success",
+    definition: "Every member's win is the family's win. We grow together — brands, communities, and careers.",
+  },
+];
