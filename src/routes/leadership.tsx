@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import logo from "@/assets/lips-family-official.jpeg.asset.json";
-import nova from "@/assets/leader-nova.jpg";
+import lolaBaby from "@/assets/lolababy_streams_profile-photo_20260919014048.jpeg";
 import kai from "@/assets/leader-kai.jpg";
 
 export const Route = createFileRoute("/leadership")({
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/leadership")({
 });
 
 const leaders = [
-  { name: "Lola Baby", position: "CEO of LIPS Family", image: nova },
+  { name: "Lola Baby", position: "CEO of LIPS Family", image: lolaBaby },
   { name: "Kai Osei", position: "Head of Talent", image: kai },
 ];
 
