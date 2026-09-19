@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { supabase } from "@/integrations/supabase/client";
 
 const navItems = [
   { label: "Home", mobileLabel: "Home", to: "/" as const, exact: true },
@@ -9,6 +11,16 @@ const navItems = [
 ];
 
 export function SiteHeader() {
+  const [signedIn, setSignedIn] = useState(false);
+
+  useEffect(() => {
+    void supabase.auth.getSession().then(({ data }) => setSignedIn(Boolean(data.session)));
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSignedIn(Boolean(session));
+    });
+    return () => data.subscription.unsubscribe();
+  }, []);
+
   return (
     <header className="fixed inset-x-0 bottom-3 z-50 px-3 md:bottom-auto md:top-4 md:px-6">
       <nav
@@ -35,6 +47,12 @@ export function SiteHeader() {
             </Link>
           ))}
         </div>
+        <Link
+          to={signedIn ? "/inbox" : "/auth"}
+          className="hidden shrink-0 rounded-lg border border-primary/30 bg-primary/10 px-3 py-2 text-[10px] font-semibold uppercase text-primary transition-colors hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:inline-block md:text-xs"
+        >
+          {signedIn ? "Inbox" : "Staff"}
+        </Link>
       </nav>
     </header>
   );
