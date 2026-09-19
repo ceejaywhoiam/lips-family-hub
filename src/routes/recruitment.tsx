@@ -131,7 +131,7 @@ function RecruitmentPage() {
                 id="platforms"
                 name="platforms"
                 label="Streaming platforms you use"
-                placeholder="Twitch, YouTube, Kick…"
+                placeholder="MICO, MeetMe, TikTok…"
                 required
                 maxLength={200}
               />
@@ -141,7 +141,7 @@ function RecruitmentPage() {
               id="platform"
               name="platform"
               label="Streaming platform you use"
-              placeholder="For example: Twitch"
+              placeholder="For example: MICO"
               required
               maxLength={100}
             />

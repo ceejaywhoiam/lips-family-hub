@@ -57,7 +57,7 @@ function Index() {
             </Link>
           </p>
           <ul aria-label="Platforms" className="mt-6 flex flex-wrap gap-2">
-            {["Twitch", "YouTube", "Kick", "TikTok", "Instagram"].map((platform) => (
+            {["MICO", "MeetMe", "TikTok", "Instagram"].map((platform) => (
               <li
                 key={platform}
                 className="rounded-md border border-border bg-surface px-3 py-1.5 text-xs text-foreground"
