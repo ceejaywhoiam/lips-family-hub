@@ -17,7 +17,7 @@ export const Route = createFileRoute("/leadership")({
 });
 
 const leaders = [
-  { name: "Nova Reyes", position: "Founder & Creative Lead", image: nova },
+  { name: "Lola Baby", position: "CEO of LIPS Family", image: nova },
   { name: "Kai Osei", position: "Head of Talent", image: kai },
 ];
 
