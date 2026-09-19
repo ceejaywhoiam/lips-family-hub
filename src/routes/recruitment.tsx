@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Field, TextField } from "@/components/field";
 import { PageShell } from "@/components/page-shell";
@@ -21,12 +22,39 @@ type Path = "agency" | "family";
 function RecruitmentPage() {
   const [path, setPath] = useState<Path>("agency");
   const [submitted, setSubmitted] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!event.currentTarget.reportValidity()) return;
+    const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+    const values = new FormData(form);
+    const text = (key: string) => {
+      const value = values.get(key);
+      return typeof value === "string" && value.trim() ? value.trim() : null;
+    };
+
+    setBusy(true);
+    setError(null);
+    const { error: insertError } = await supabase.from("applications").insert({
+      path,
+      streaming_name: text("streamingName") ?? "",
+      email: text("email") ?? "",
+      platforms: path === "family" ? text("platforms") : text("platform"),
+      experience: text("experience"),
+      content: text("content"),
+      contribution: text("contribution"),
+    });
+    setBusy(false);
+
+    if (insertError) {
+      setError("Your application could not be sent. Please check your connection and try again.");
+      return;
+    }
+
     setSubmitted(true);
-    event.currentTarget.reset();
+    form.reset();
   }
 
   return (
@@ -34,7 +62,7 @@ function RecruitmentPage() {
       <div className="mx-auto max-w-3xl">
         <div className="mb-5 grid grid-cols-2 gap-3" aria-label="Application type">
           {(["agency", "family"] as Path[]).map((option) => (
-            <Button key={option} type="button" variant={path === option ? "brand" : "glass"} className="h-16 text-xs md:text-sm" onClick={() => { setPath(option); setSubmitted(false); }} aria-pressed={path === option}>
+            <Button key={option} type="button" variant={path === option ? "brand" : "glass"} className="h-16 text-xs md:text-sm" onClick={() => { setPath(option); setSubmitted(false); setError(null); }} aria-pressed={path === option}>
               Join the {option === "agency" ? "Agency" : "Family"}
             </Button>
           ))}
@@ -57,7 +85,14 @@ function RecruitmentPage() {
           )}
           <Field id="streaming-name" name="streamingName" label="Streaming name" placeholder="Your channel or creator name" required maxLength={100} />
           <Field id="email" name="email" type="email" label="Email address" placeholder="you@example.com" required maxLength={254} autoComplete="email" />
-          <Button type="submit" variant="brand" className="h-12 w-full">Submit application</Button>
+          <Button type="submit" variant="brand" className="h-12 w-full" disabled={busy}>
+            {busy ? "Sending…" : "Submit application"}
+          </Button>
+          {error ? (
+            <p role="alert" className="rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-center text-sm text-foreground">
+              {error}
+            </p>
+          ) : null}
           {submitted ? (
             <p role="status" className="rounded-lg border border-primary/30 bg-primary/10 p-4 text-center text-sm font-medium text-foreground">
               A response will be given within 7 days. Thank you for your application.
