@@ -12,7 +12,7 @@ export function PageShell({
   children: ReactNode;
 }) {
   return (
-    <main className="relative min-h-screen overflow-hidden px-5 pb-28 pt-10 md:px-8 md:pb-16 md:pt-32">
+    <main className="relative min-h-screen overflow-hidden px-4 pb-[calc(8rem+env(safe-area-inset-bottom))] pt-[max(2.5rem,env(safe-area-inset-top))] sm:px-5 md:px-8 md:pb-16 md:pt-32">
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
       <div className="relative mx-auto max-w-6xl">
@@ -20,7 +20,7 @@ export function PageShell({
           <span className="size-1.5 rounded-full bg-primary" />
           {eyebrow}
         </p>
-        <h1 className="max-w-4xl font-display text-5xl font-black leading-[0.94] text-foreground md:text-7xl">
+        <h1 className="max-w-4xl text-balance font-display text-4xl font-black leading-[0.94] text-foreground sm:text-5xl md:text-7xl">
           {title}
         </h1>
         {intro ? (
