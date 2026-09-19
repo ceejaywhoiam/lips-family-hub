@@ -33,7 +33,7 @@ export function SiteHeader() {
           </span>
           <span className="font-display text-base font-black text-foreground">LIPS</span>
         </Link>
-        <div className="grid w-full grid-cols-5 items-center gap-1 md:flex md:w-auto md:gap-2">
+        <div className="grid flex-1 grid-cols-5 items-center gap-1 md:flex md:w-auto md:gap-2">
           {navItems.map((item) => (
             <Link
               key={item.to}
@@ -49,7 +49,7 @@ export function SiteHeader() {
         </div>
         <Link
           to={signedIn ? "/inbox" : "/auth"}
-          className="hidden shrink-0 rounded-lg border border-primary/30 bg-primary/10 px-3 py-2 text-[10px] font-semibold uppercase text-primary transition-colors hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:inline-block md:text-xs"
+          className="shrink-0 rounded-lg border border-primary/30 bg-primary/10 px-3 py-2 text-[10px] font-semibold uppercase text-primary transition-colors hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-xs"
         >
           {signedIn ? "Inbox" : "Staff"}
         </Link>
