@@ -19,7 +19,7 @@ RETURNS boolean LANGUAGE sql STABLE SECURITY DEFINER SET search_path = public AS
   SELECT EXISTS (SELECT 1 FROM public.user_roles WHERE user_id = _user_id AND role = _role)
 $$;
 
--- The first account created becomes the admin so the owner can reach the inbox.
+-- Admin roles are provisioned out-of-band by operators.
 CREATE OR REPLACE FUNCTION public.grant_first_user_admin()
 RETURNS TRIGGER LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$
 BEGIN
@@ -30,9 +30,6 @@ BEGIN
   RETURN NEW;
 END;
 $$;
-CREATE TRIGGER on_auth_user_created_grant_admin
-AFTER INSERT ON auth.users
-FOR EACH ROW EXECUTE FUNCTION public.grant_first_user_admin();
 
 CREATE TABLE public.applications (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
