@@ -80,11 +80,20 @@ function InboxPage() {
     >
       <div className="mb-6 flex flex-wrap items-center gap-3">
         {counts.map(({ status, count }) => (
-          <span key={status} className="rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted-foreground">
-            {statusLabel(status)}: <strong className="font-semibold text-foreground">{count}</strong>
+          <span
+            key={status}
+            className="rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted-foreground"
+          >
+            {statusLabel(status)}:{" "}
+            <strong className="font-semibold text-foreground">{count}</strong>
           </span>
         ))}
-        <Button type="button" variant="glass" className="ml-auto h-10 text-xs" onClick={signOut}>
+        <Button
+          type="button"
+          variant="glass"
+          className="h-10 w-full text-xs sm:ml-auto sm:w-auto"
+          onClick={signOut}
+        >
           Sign out
         </Button>
       </div>
@@ -92,7 +101,10 @@ function InboxPage() {
       {isPending ? <p className="text-sm text-muted-foreground">Loading applications…</p> : null}
 
       {error ? (
-        <p role="alert" className="rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-sm text-foreground">
+        <p
+          role="alert"
+          className="rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-sm text-foreground"
+        >
           These applications could not be loaded. Your account may not have reviewer access yet.
         </p>
       ) : null}
@@ -105,18 +117,26 @@ function InboxPage() {
 
       <ul className="space-y-4">
         {applications.map((application) => (
-          <li key={application.id} className="glass-panel rounded-2xl border border-border p-5 md:p-6">
+          <li
+            key={application.id}
+            className="glass-panel rounded-2xl border border-border p-5 md:p-6"
+          >
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
                   {application.path === "agency" ? "Join the Agency" : "Join the Family"}
                 </p>
-                <h2 className="mt-1 font-display text-xl font-black text-foreground">{application.streaming_name}</h2>
-                <a href={`mailto:${application.email}`} className="text-sm text-muted-foreground underline-offset-4 hover:underline">
+                <h2 className="mt-1 font-display text-xl font-black text-foreground">
+                  {application.streaming_name}
+                </h2>
+                <a
+                  href={`mailto:${application.email}`}
+                  className="break-all text-sm text-muted-foreground underline-offset-4 hover:underline"
+                >
                   {application.email}
                 </a>
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="w-full text-xs text-muted-foreground sm:w-auto sm:text-right">
                 {new Date(application.created_at).toLocaleString()}
               </p>
             </div>
@@ -128,13 +148,17 @@ function InboxPage() {
               <Detail label="What they bring" value={application.contribution} />
             </dl>
 
-            <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label={`Status for ${application.streaming_name}`}>
+            <div
+              className="mt-5 flex flex-wrap gap-2"
+              role="group"
+              aria-label={`Status for ${application.streaming_name}`}
+            >
               {STATUSES.map((status) => (
                 <Button
                   key={status}
                   type="button"
                   variant={application.status === status ? "brand" : "glass"}
-                  className="h-10 text-xs"
+                  className="h-10 flex-1 text-xs sm:flex-none"
                   aria-pressed={application.status === status}
                   disabled={setStatus.isPending}
                   onClick={() => setStatus.mutate({ id: application.id, status })}
@@ -155,7 +179,9 @@ function Detail({ label, value }: { label: string; value: string | null }) {
   return (
     <div>
       <dt className="text-xs font-semibold uppercase text-muted-foreground">{label}</dt>
-      <dd className="mt-1 whitespace-pre-wrap leading-relaxed text-foreground">{value}</dd>
+      <dd className="mt-1 break-words whitespace-pre-wrap leading-relaxed text-foreground">
+        {value}
+      </dd>
     </div>
   );
 }
