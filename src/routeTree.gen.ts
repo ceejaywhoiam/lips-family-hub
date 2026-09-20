@@ -15,6 +15,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LeadershipRouteImport } from './routes/leadership'
 import { Route as MerchRouteImport } from './routes/merch'
+import { Route as MicoCoinSellingRouteImport } from './routes/mico-coin-selling'
 import { Route as RecruitmentRouteImport } from './routes/recruitment'
 import { Route as AuthenticatedInboxRouteImport } from './routes/_authenticated/inbox'
 
@@ -47,6 +48,11 @@ const MerchRoute = MerchRouteImport.update({
   path: '/merch',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MicoCoinSellingRoute = MicoCoinSellingRouteImport.update({
+  id: '/mico-coin-selling',
+  path: '/mico-coin-selling',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RecruitmentRoute = RecruitmentRouteImport.update({
   id: '/recruitment',
   path: '/recruitment',
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/leadership': typeof LeadershipRoute
   '/merch': typeof MerchRoute
+  '/mico-coin-selling': typeof MicoCoinSellingRoute
   '/recruitment': typeof RecruitmentRoute
   '/inbox': typeof AuthenticatedInboxRoute
 }
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/leadership': typeof LeadershipRoute
   '/merch': typeof MerchRoute
+  '/mico-coin-selling': typeof MicoCoinSellingRoute
   '/recruitment': typeof RecruitmentRoute
   '/inbox': typeof AuthenticatedInboxRoute
 }
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/leadership': typeof LeadershipRoute
   '/merch': typeof MerchRoute
+  '/mico-coin-selling': typeof MicoCoinSellingRoute
   '/recruitment': typeof RecruitmentRoute
   '/_authenticated/inbox': typeof AuthenticatedInboxRoute
 }
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/leadership'
     | '/merch'
+    | '/mico-coin-selling'
     | '/recruitment'
     | '/inbox'
   fileRoutesByTo: FileRoutesByTo
@@ -104,6 +114,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/leadership'
     | '/merch'
+    | '/mico-coin-selling'
     | '/recruitment'
     | '/inbox'
   id:
@@ -114,6 +125,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/leadership'
     | '/merch'
+    | '/mico-coin-selling'
     | '/recruitment'
     | '/_authenticated/inbox'
   fileRoutesById: FileRoutesById
@@ -125,6 +137,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   LeadershipRoute: typeof LeadershipRoute
   MerchRoute: typeof MerchRoute
+  MicoCoinSellingRoute: typeof MicoCoinSellingRoute
   RecruitmentRoute: typeof RecruitmentRoute
 }
 
@@ -172,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MerchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mico-coin-selling': {
+      id: '/mico-coin-selling'
+      path: '/mico-coin-selling'
+      fullPath: '/mico-coin-selling'
+      preLoaderRoute: typeof MicoCoinSellingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/recruitment': {
       id: '/recruitment'
       path: '/recruitment'
@@ -207,6 +227,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   LeadershipRoute: LeadershipRoute,
   MerchRoute: MerchRoute,
+  MicoCoinSellingRoute: MicoCoinSellingRoute,
   RecruitmentRoute: RecruitmentRoute,
 }
 export const routeTree = rootRouteImport
