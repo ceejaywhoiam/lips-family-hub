@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import logo from "@/assets/lips-family-official.jpeg.asset.json";
 import lolaBaby from "@/assets/lolababy_streams_profile-photo_20260919014048.jpeg";
-import kai from "@/assets/leader-kai.jpg";
+import jodiPlease from "@/assets/09FD396C-D76C-4F98-B0AB-3C54A8481C25.png";
 
 export const Route = createFileRoute("/leadership")({
   head: () => ({ meta: [
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/leadership")({
 
 const leaders = [
   { name: "Lola Baby", position: "CEO of LIPS Family", image: lolaBaby },
-  { name: "Kai Osei", position: "Head of Talent", image: kai },
+  { name: "Jodi Please", position: "Head of Creative Team", image: jodiPlease },
 ];
 
 function LeadershipPage() {
