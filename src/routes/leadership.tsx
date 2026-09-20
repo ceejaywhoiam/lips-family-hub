@@ -26,7 +26,7 @@ function LeadershipPage() {
     <PageShell eyebrow="The crew" title="Leadership" intro="The people shaping the LIPS vision, supporting talent, and building a creator-first culture.">
       <div className="grid gap-5 md:grid-cols-2">
         {leaders.map((leader) => (
-          <article key={leader.name} className="glass-panel overflow-hidden rounded-2xl border border-border md:grid md:grid-cols-[0.85fr_1.15fr]">
+          <article key={leader.name} className="glass-panel overflow-hidden rounded-2xl border border-border flex flex-col md:grid md:grid-cols-[0.85fr_1.15fr]">
             <img src={leader.image} alt={`Placeholder portrait for ${leader.name}`} width={736} height={912} loading="lazy" className="aspect-[4/3] h-full w-full object-cover md:aspect-auto" />
             <div className="flex flex-col justify-between p-5 md:p-7">
               <img src={logo.url} alt="LIPS Family crown logo" width={768} height={768} loading="lazy" className="mb-10 size-20 rounded-md border border-border object-cover" />
