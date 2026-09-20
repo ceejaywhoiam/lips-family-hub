@@ -17,8 +17,8 @@ export const Route = createFileRoute("/leadership")({
 });
 
 const leaders = [
-  { name: "Lola Baby", position: "CEO of LIPS Family", image: lolaBaby },
-  { name: "Jodi Please", position: "Head of Creative Team", image: jodiPlease },
+  { name: "Lola Baby", position: "CEO of LIPS Family", image: lolaBaby, instagram: "@lolababy_streams" },
+  { name: "Jodi Please", position: "Head of Creative Team", image: jodiPlease, instagram: "@jodiplease" },
 ];
 
 function LeadershipPage() {
@@ -35,7 +35,7 @@ function LeadershipPage() {
                 <h2 className="mt-1 font-display text-2xl font-black text-foreground">{leader.name}</h2>
                 <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Position</p>
                 <p className="mt-1 text-sm font-medium text-primary">{leader.position}</p>
-                <p className="mt-5 text-xs text-muted-foreground">[Placeholder person — replace name, role, and photo]</p>
+                <p className="mt-5 text-xs text-muted-foreground">Instagram: {leader.instagram}</p>
               </div>
             </div>
           </article>
