@@ -6,6 +6,7 @@ const navItems = [
   { label: "Home", mobileLabel: "Home", to: "/" as const, exact: true },
   { label: "Leadership", mobileLabel: "Leaders", to: "/leadership" as const },
   { label: "Recruitment", mobileLabel: "Recruit", to: "/recruitment" as const },
+  { label: "MICO Coin Selling", mobileLabel: "Coins", to: "/mico-coin-selling" as const },
   { label: "Merch", mobileLabel: "Merch", to: "/merch" as const },
   { label: "Contact Info", mobileLabel: "Contact", to: "/contact" as const },
 ];
@@ -33,7 +34,7 @@ export function SiteHeader() {
           </span>
           <span className="font-display text-base font-black text-foreground">LIPS</span>
         </Link>
-        <div className="grid w-full flex-1 grid-cols-5 items-center gap-1 sm:gap-2 md:w-auto md:flex md:justify-center">
+        <div className="grid w-full flex-1 grid-cols-6 items-center gap-1 sm:gap-2 md:w-auto md:flex md:justify-center">
           {navItems.map((item) => (
             <Link
               key={item.to}
