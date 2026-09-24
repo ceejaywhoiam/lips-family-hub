@@ -3,8 +3,8 @@ import { PageShell } from "@/components/page-shell";
 import logo from "@/assets/lips-family-official.jpeg.asset.json";
 import lolaBaby from "@/assets/lolababy_streams_profile-photo_20260919014048.jpeg";
 import jodiPlease from "@/assets/09FD396C-D76C-4F98-B0AB-3C54A8481C25.png";
-import leaderNova from "@/assets/leader-nova.jpg";
 import leaderKai from "@/assets/leader-kai.jpg";
+import peppermint from "@/assets/peppermint.jpeg.asset.json";
 
 export const Route = createFileRoute("/leadership")({
   head: () => ({ meta: [
