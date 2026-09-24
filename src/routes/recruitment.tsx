@@ -176,12 +176,20 @@ function RecruitmentPage() {
             </p>
           ) : null}
           {submitted ? (
-            <p
+            <div
               role="status"
               className="rounded-lg border border-primary/30 bg-primary/10 p-4 text-center text-sm font-medium text-foreground"
             >
-              A response will be given within 7 days. Thank you for your application.
-            </p>
+              <p>A response will be given within 7 days. Thank you for your application.</p>
+              <p className="mt-2">
+                <Link
+                  to="/application-status"
+                  className="font-semibold text-primary underline-offset-4 hover:underline"
+                >
+                  Check your application status
+                </Link>
+              </p>
+            </div>
           ) : null}
         </form>
       </div>

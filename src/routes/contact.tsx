@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { supabase } from "@/integrations/supabase/client";
 import { PageShell } from "@/components/page-shell";
 import { Field, TextField } from "@/components/field";
 import { Button } from "@/components/ui/button";
@@ -18,12 +19,36 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!event.currentTarget.reportValidity()) return;
+    const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+    const values = new FormData(form);
+    const text = (key: string) => {
+      const value = values.get(key);
+      return typeof value === "string" ? value.trim() : "";
+    };
+
+    setBusy(true);
+    setError(null);
+    const { error: insertError } = await supabase.from("contact_messages").insert({
+      name: text("name"),
+      email: text("email"),
+      subject: text("subject"),
+      message: text("message"),
+    });
+    setBusy(false);
+
+    if (insertError) {
+      setError("Your inquiry could not be sent. Please check your connection and try again.");
+      return;
+    }
+
     setSent(true);
-    event.currentTarget.reset();
+    form.reset();
   }
 
   return (
@@ -33,7 +58,17 @@ function ContactPage() {
         <Field id="contact-email" name="email" type="email" label="Email address" placeholder="you@example.com" required maxLength={254} autoComplete="email" />
         <Field id="contact-subject" name="subject" label="What is this about?" placeholder="App, website, collaboration, or general question" required maxLength={150} />
         <TextField id="contact-message" name="message" label="Your inquiry" placeholder="Tell us what you would like to discuss" required maxLength={1500} />
-        <Button type="submit" variant="glass" className="h-12 w-full">Send inquiry</Button>
+        <Button type="submit" variant="glass" className="h-12 w-full" disabled={busy}>
+          {busy ? "Sending…" : "Send inquiry"}
+        </Button>
+        {error ? (
+          <p
+            role="alert"
+            className="rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-center text-sm text-foreground"
+          >
+            {error}
+          </p>
+        ) : null}
         {sent ? <p role="status" className="text-center text-sm font-medium text-primary">Thanks — your inquiry is ready for the LIPS team.</p> : null}
       </form>
     </PageShell>
