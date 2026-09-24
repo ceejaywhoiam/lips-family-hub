@@ -32,7 +32,7 @@ function LeadershipPage() {
         {leaders.map((leader) => (
           <article key={leader.name} className="glass-panel overflow-hidden rounded-2xl border border-border flex flex-col md:grid md:grid-cols-[0.85fr_1.15fr]">
             <div className="relative">
-              <img src={leader.image} alt={`Placeholder portrait for ${leader.name}`} width={736} height={912} loading="lazy" className="aspect-[4/3] h-full w-full object-cover md:aspect-auto" />
+              <img src={leader.image} alt={`Portrait of ${leader.name}`} width={736} height={912} loading="lazy" className="aspect-[4/3] h-full w-full object-cover md:aspect-auto" />
               {leader.placeholder && (
                 <span className="absolute left-2 top-2 rounded-full border border-border bg-background/80 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.15em] text-muted-foreground backdrop-blur">
                   Placeholder
