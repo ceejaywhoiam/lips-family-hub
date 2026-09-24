@@ -21,7 +21,7 @@ export const Route = createFileRoute("/leadership")({
 const leaders = [
   { name: "Lola Baby", position: "CEO of LIPS Family", image: lolaBaby, instagram: "@lolababy_streams", placeholder: false },
   { name: "Jodi Please", position: "Head of Creative Team", image: jodiPlease, instagram: "@jodiplease", placeholder: false },
-  { name: "Nova Reyes", position: "Founder & Creative Lead", image: leaderNova, instagram: "@lipsfamily", placeholder: true },
+  { name: "Peppermint", position: "Head of Conflict Resolutions", image: peppermint.url, instagram: "@_crypticsilences_", placeholder: false },
   { name: "Kai Osei", position: "Head of Talent", image: leaderKai, instagram: "@lipsfamily", placeholder: true },
 ];
 
