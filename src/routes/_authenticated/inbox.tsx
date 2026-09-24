@@ -9,7 +9,10 @@ export const Route = createFileRoute("/_authenticated/inbox")({
   head: () => ({
     meta: [
       { title: "Staff inbox — LIPS Family" },
-      { name: "description", content: "Review applications and inquiries submitted to LIPS Family." },
+      {
+        name: "description",
+        content: "Review applications and inquiries submitted to LIPS Family.",
+      },
       { property: "og:title", content: "Staff inbox — LIPS Family" },
       { property: "og:description", content: "Private review inbox for LIPS Family staff." },
       { property: "og:type", content: "website" },
@@ -86,7 +89,10 @@ function InboxPage() {
 
   const setRead = useMutation({
     mutationFn: async ({ id, isRead }: { id: string; isRead: boolean }) => {
-      const { error } = await supabase.from("contact_messages").update({ is_read: isRead }).eq("id", id);
+      const { error } = await supabase
+        .from("contact_messages")
+        .update({ is_read: isRead })
+        .eq("id", id);
       if (error) throw error;
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["contact-messages"] }),
@@ -154,7 +160,11 @@ function InboxPage() {
           pending={setStatus.isPending}
         />
       ) : (
-        <InquiriesPanel query={inquiriesQuery} onSetRead={(id, isRead) => setRead.mutate({ id, isRead })} pending={setRead.isPending} />
+        <InquiriesPanel
+          query={inquiriesQuery}
+          onSetRead={(id, isRead) => setRead.mutate({ id, isRead })}
+          pending={setRead.isPending}
+        />
       )}
     </PageShell>
   );
@@ -181,12 +191,15 @@ function ApplicationsPanel({
             key={status}
             className="rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted-foreground"
           >
-            {statusLabel(status)}: <strong className="font-semibold text-foreground">{count}</strong>
+            {statusLabel(status)}:{" "}
+            <strong className="font-semibold text-foreground">{count}</strong>
           </span>
         ))}
       </div>
 
-      {query.isPending ? <p className="text-sm text-muted-foreground">Loading applications…</p> : null}
+      {query.isPending ? (
+        <p className="text-sm text-muted-foreground">Loading applications…</p>
+      ) : null}
 
       {query.error ? (
         <p
@@ -205,7 +218,10 @@ function ApplicationsPanel({
 
       <ul className="space-y-4">
         {applications.map((application) => (
-          <li key={application.id} className="glass-panel rounded-2xl border border-border p-5 md:p-6">
+          <li
+            key={application.id}
+            className="glass-panel rounded-2xl border border-border p-5 md:p-6"
+          >
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
@@ -302,7 +318,9 @@ function InquiriesPanel({
                 <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
                   {inquiry.is_read ? "Read" : "New"}
                 </p>
-                <h2 className="mt-1 font-display text-xl font-black text-foreground">{inquiry.subject}</h2>
+                <h2 className="mt-1 font-display text-xl font-black text-foreground">
+                  {inquiry.subject}
+                </h2>
                 <p className="text-sm font-semibold text-foreground">{inquiry.name}</p>
                 <a
                   href={`mailto:${inquiry.email}?subject=${encodeURIComponent(`Re: ${inquiry.subject}`)}`}
@@ -344,7 +362,9 @@ function Detail({ label, value }: { label: string; value: string | null }) {
   return (
     <div>
       <dt className="text-xs font-semibold uppercase text-muted-foreground">{label}</dt>
-      <dd className="mt-1 break-words whitespace-pre-wrap leading-relaxed text-foreground">{value}</dd>
+      <dd className="mt-1 break-words whitespace-pre-wrap leading-relaxed text-foreground">
+        {value}
+      </dd>
     </div>
   );
 }

@@ -35,7 +35,8 @@ type StatusResult = {
 const STATUS_COPY: Record<StatusResult["status"], { label: string; detail: string }> = {
   new: {
     label: "Received",
-    detail: "Your application is in and waiting to be reviewed. A response will be given within 7 days.",
+    detail:
+      "Your application is in and waiting to be reviewed. A response will be given within 7 days.",
   },
   reviewing: {
     label: "Under review",
@@ -91,7 +92,10 @@ function ApplicationStatusPage() {
       intro="Enter the email you applied with to check where your application stands. Nothing is shared with anyone else."
     >
       <div className="mx-auto max-w-2xl space-y-6">
-        <form onSubmit={submit} className="glass-panel space-y-5 rounded-2xl border border-border p-5 md:p-8">
+        <form
+          onSubmit={submit}
+          className="glass-panel space-y-5 rounded-2xl border border-border p-5 md:p-8"
+        >
           <Field
             id="status-email"
             name="email"
@@ -108,7 +112,10 @@ function ApplicationStatusPage() {
         </form>
 
         {error ? (
-          <p role="alert" className="rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-sm text-foreground">
+          <p
+            role="alert"
+            className="rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-sm text-foreground"
+          >
             {error}
           </p>
         ) : null}
@@ -129,9 +136,15 @@ function ApplicationStatusPage() {
         ) : null}
 
         {searched && !result && !error ? (
-          <p role="status" className="glass-panel rounded-2xl p-5 text-sm text-muted-foreground md:p-6">
+          <p
+            role="status"
+            className="glass-panel rounded-2xl p-5 text-sm text-muted-foreground md:p-6"
+          >
             No application was found for that email address. Double-check the email you used, or{" "}
-            <Link to="/recruitment" className="font-semibold text-primary underline-offset-4 hover:underline">
+            <Link
+              to="/recruitment"
+              className="font-semibold text-primary underline-offset-4 hover:underline"
+            >
               submit an application
             </Link>
             .

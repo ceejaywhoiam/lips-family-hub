@@ -61,7 +61,9 @@ function MerchPage() {
             <br />
             <span
               className="text-transparent"
-              style={{ WebkitTextStroke: "1px color-mix(in oklab, var(--foreground) 45%, transparent)" }}
+              style={{
+                WebkitTextStroke: "1px color-mix(in oklab, var(--foreground) 45%, transparent)",
+              }}
             >
               Construction
             </span>
@@ -82,8 +84,8 @@ function MerchPage() {
           {/* Copy */}
           <div className="relative z-10 space-y-4">
             <p className="text-sm leading-relaxed text-muted-foreground">
-              The first LIPS Family apparel drop is in production. Nothing is on
-              sale yet — this is your early look while it comes together.
+              The first LIPS Family apparel drop is in production. Nothing is on sale yet — this is
+              your early look while it comes together.
             </p>
 
             <div className="flex flex-col gap-2 sm:flex-row">

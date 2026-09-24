@@ -11,7 +11,10 @@ export const Route = createFileRoute("/auth")({
       { title: "Staff sign in — LIPS Family" },
       { name: "description", content: "Sign in to review LIPS Family recruitment applications." },
       { property: "og:title", content: "Staff sign in — LIPS Family" },
-      { property: "og:description", content: "Private sign in for the LIPS Family application inbox." },
+      {
+        property: "og:description",
+        content: "Private sign in for the LIPS Family application inbox.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex" },
@@ -53,7 +56,10 @@ function AuthPage() {
       title="Sign in to the inbox."
       intro="Applications are private. Sign in with your staff account to review them."
     >
-      <form onSubmit={submit} className="glass-panel mx-auto max-w-md space-y-5 rounded-2xl border border-border p-5 md:p-8">
+      <form
+        onSubmit={submit}
+        className="glass-panel mx-auto max-w-md space-y-5 rounded-2xl border border-border p-5 md:p-8"
+      >
         <Field
           id="auth-email"
           name="email"
@@ -83,7 +89,10 @@ function AuthPage() {
           {busy ? "Please wait…" : "Sign in"}
         </Button>
         {error ? (
-          <p role="alert" className="rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm text-foreground">
+          <p
+            role="alert"
+            className="rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm text-foreground"
+          >
             {error}
           </p>
         ) : null}
