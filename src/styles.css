@@ -19,6 +19,7 @@
  */
 
 @theme inline {
+  --color-gold: var(--gold);
   --font-display: "Archivo", sans-serif;
   --font-body: "Space Grotesk", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
