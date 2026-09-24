@@ -4,14 +4,24 @@ import flyer from "@/assets/mico-coin-seller.jpeg.asset.json";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/mico-coin-selling")({
-  head: () => ({ meta: [
-    { title: "MICO Coin Selling — LIPS Family" },
-    { name: "description", content: "Official MICO coin selling rates from LIPS Family. MICO USA streamers only — contact Lola Baby with any questions or concerns." },
-    { property: "og:title", content: "MICO Coin Selling — LIPS Family" },
-    { property: "og:description", content: "Official MICO coin selling rates. MICO USA streamers only — contact Lola Baby with any questions or concerns." },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-  ] }),
+  head: () => ({
+    meta: [
+      { title: "MICO Coin Selling — LIPS Family" },
+      {
+        name: "description",
+        content:
+          "Official MICO coin selling rates from LIPS Family. MICO USA streamers only — contact Lola Baby with any questions or concerns.",
+      },
+      { property: "og:title", content: "MICO Coin Selling — LIPS Family" },
+      {
+        property: "og:description",
+        content:
+          "Official MICO coin selling rates. MICO USA streamers only — contact Lola Baby with any questions or concerns.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: MicoCoinSellingPage,
 });
 
@@ -30,7 +40,8 @@ function MicoCoinSellingPage() {
           MICO USA Streamers Only
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          This service is exclusive to MICO streamers located in the USA. If that's not you, this page doesn't apply.
+          This service is exclusive to MICO streamers located in the USA. If that's not you, this
+          page doesn't apply.
         </p>
       </div>
 
@@ -45,9 +56,13 @@ function MicoCoinSellingPage() {
       </div>
 
       <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-border bg-surface px-5 py-6 text-center">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Questions or concerns?</p>
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          Questions or concerns?
+        </p>
         <p className="mt-2 text-lg font-semibold text-foreground">Contact Lola Baby</p>
-        <p className="mt-1 text-sm text-muted-foreground">CEO of LIPS Family — she handles all coin selling questions personally.</p>
+        <p className="mt-1 text-sm text-muted-foreground">
+          CEO of LIPS Family — she handles all coin selling questions personally.
+        </p>
         <Button asChild variant="brand" className="mt-5">
           <Link to="/contact">Message us</Link>
         </Button>
