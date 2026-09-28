@@ -176,7 +176,7 @@ function ApplicationsPanel({
   onSetStatus,
   pending,
 }: {
-  query: { isPending: boolean; error: unknown; data?: Application[] };
+  query: { isPending: boolean; error: unknown; data: Application[] | undefined };
   counts: { status: Status; count: number }[];
   onSetStatus: (id: string, status: Status) => void;
   pending: boolean;
@@ -280,7 +280,7 @@ function InquiriesPanel({
   onSetRead,
   pending,
 }: {
-  query: { isPending: boolean; error: unknown; data?: Inquiry[] };
+  query: { isPending: boolean; error: unknown; data: Inquiry[] | undefined };
   onSetRead: (id: string, isRead: boolean) => void;
   pending: boolean;
 }) {
